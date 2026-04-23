@@ -1,18 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #eee;
   --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-roboto: var(--font-roboto);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -22,5 +21,23 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto);
+}
+
+@layer base {
+  .container {
+    @apply mx-auto px-4 md:px-8 lg:px-16 xl:px-32;
+  }
+
+  .section-gap {
+    @apply my-8 md:my-16;
+  }
+
+  .card {
+    @apply p-5 bg-neutral-300 border border-neutral-400 rounded-xl shadow-sm hover:shadow-md hover:border-neutral-500 transition-transform duration-300;
+  }
+
+  .button {
+    @apply px-4 py-2 rounded-md cursor-pointer font-medium hover:scale-105 active:scale-90 transition-all duration-300;
+  }
 }
