@@ -40,4 +40,8 @@ body {
   .button {
     @apply px-4 py-2 rounded-md cursor-pointer font-medium hover:scale-105 active:scale-90 transition-all duration-300;
   }
+
+  .input {
+    @apply px-4 py-2 focus:outline-none ring-2 ring-gray-200 focus:ring-blue-400 w-full rounded-md transition-colors duration-200;
+  }
 }

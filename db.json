@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "First Blog Post",
+      "body": "This is The Body Of The First Post Post"
+    },
+    {
+      "userId": 2,
+      "id": 2,
+      "title": "Second Blog Post",
+      "body": "This is The Body Of The Second Post Post"
+    },
+    {
+      "userId": 3,
+      "id": 3,
+      "title": "Third Blog Post",
+      "body": "This is The Body Of The Third Post Post"
+    }
+  ]
+}

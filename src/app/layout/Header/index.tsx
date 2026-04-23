@@ -1,8 +1,9 @@
 import Link from "next/link";
+import SearchInput from "./SearchInput";
 
 const Header = () => {
   return (
-    <header className="shadow-sm shadow-blue-400">
+    <header className="shadow-sm shadow-blue-200">
       <div className="container flex items-center justify-between gap-8 py-5">
         <Link
           href={"/"}
@@ -11,12 +12,7 @@ const Header = () => {
           Posts
         </Link>
 
-        <input
-          type="search"
-          name="search"
-          placeholder="Search By Title..."
-          className="px-4 py-2 focus:outline-none ring ring-blue-400 focus:ring-2 w-full rounded-md"
-        />
+        <SearchInput />
 
         <button className="button bg-blue-500 text-white">New</button>
       </div>
