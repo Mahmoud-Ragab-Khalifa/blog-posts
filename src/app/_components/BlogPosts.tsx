@@ -2,6 +2,7 @@
 
 import { useSearch } from "@/contexts/SearchContext";
 import { Post } from "@/types/post";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const BlogPosts = ({ posts }: { posts: Post[] }) => {
@@ -22,7 +23,13 @@ const BlogPosts = ({ posts }: { posts: Post[] }) => {
       {filteredPosts.map((post) => (
         <div key={post.id} className="card">
           <h1 className="font-medium text-xl">{post.title}</h1>
-          <p className="mt-2 line-clamp-1">{post.body}</p>
+          <p className="my-2 line-clamp-1">{post.body}</p>
+          <Link
+            href={`/posts/${post.id}`}
+            className="text-sm font-medium text-blue-500"
+          >
+            Read More
+          </Link>
         </div>
       ))}
     </div>

@@ -10,3 +10,23 @@ export const getPosts = async () => {
 
   return posts;
 };
+
+export const getPost = async (postId: number) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`,
+    {
+      next: {
+        tags: [`post-${postId}`],
+        revalidate: 3600,
+      },
+    },
+  );
+
+  if (!res.ok) {
+    return null;
+  }
+
+  const post = await res.json();
+
+  return post;
+};
