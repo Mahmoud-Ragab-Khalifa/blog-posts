@@ -11,7 +11,7 @@ export const getPosts = async () => {
   return posts;
 };
 
-export const getPost = async (postId: number) => {
+export const getPost = async (postId: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`,
     {

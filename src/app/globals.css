@@ -34,7 +34,7 @@ body {
   }
 
   .card {
-    @apply p-5 bg-neutral-300 border border-neutral-400 rounded-xl shadow-sm hover:shadow-md hover:border-neutral-500 transition-transform duration-300;
+    @apply p-5 bg-neutral-200 border border-neutral-400 rounded-xl shadow-sm hover:shadow-md hover:border-neutral-500 transition-transform duration-300;
   }
 
   .button {
@@ -42,6 +42,10 @@ body {
   }
 
   .input {
-    @apply px-4 py-2 focus:outline-none ring-2 ring-gray-200 focus:ring-blue-400 w-full rounded-md transition-colors duration-200;
+    @apply px-4 py-2 focus:outline-none ring-2 ring-blue-300 focus:ring-blue-400 w-full rounded-md transition-colors duration-200;
+  }
+
+  ::placeholder {
+    @apply text-sm;
   }
 }

@@ -17,8 +17,6 @@ const PostPage = async ({
 
   const post: Post = await getPost(postId);
 
-  console.log(post);
-
   if (!post) {
     redirect("/");
   }

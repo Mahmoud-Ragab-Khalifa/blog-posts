@@ -1,22 +1,15 @@
 {
   "posts": [
     {
-      "userId": 1,
-      "id": 1,
-      "title": "First Blog Post",
-      "body": "This is The Body Of The First Post Post"
+      "title": "Fourth Blog Post From Server Actions",
+      "body": "This is Fourth Blog Post From Server Actions",
+      "id": "8oaFUaNCKl0"
     },
     {
-      "userId": 2,
-      "id": 2,
-      "title": "Second Blog Post",
-      "body": "This is The Body Of The Second Post Post"
-    },
-    {
-      "userId": 3,
-      "id": 3,
-      "title": "Third Blog Post",
-      "body": "This is The Body Of The Third Post Post"
+      "title": "test",
+      "body": "test",
+      "id": "kbP5miIefTk"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
