@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 const PostPage = async ({
   params,
 }: {
-  params: Promise<{ postId: number }>;
+  params: Promise<{ postId: string }>;
 }) => {
   const { postId } = await params;
 
