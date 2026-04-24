@@ -1,11 +1,11 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
 import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
+import { useActionState } from "react";
 
 const NewPostForm = () => {
-  const [error, action] = useFormState(createNewPost, {});
+  const [error, action, pending] = useActionState(createNewPost, {});
 
   return (
     <form className="w-full max-w-lg card grid gap-6" action={action}>
@@ -44,24 +44,16 @@ const NewPostForm = () => {
           Cancel
         </Link>
 
-        <SubmitButton />
+        <button
+          type="submit"
+          className="button bg-blue-500 text-white"
+          disabled={pending}
+        >
+          {pending ? "Saveing..." : "Save"}
+        </button>
       </div>
     </form>
   );
 };
 
 export default NewPostForm;
-
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      className="button bg-blue-500 text-white"
-      disabled={pending}
-    >
-      {pending ? "Saveing..." : "Save"}
-    </button>
-  );
-};

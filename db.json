@@ -9,6 +9,16 @@
       "title": "test",
       "body": "test",
       "id": "kbP5miIefTk"
+    },
+    {
+      "title": "new",
+      "body": "new",
+      "id": "-fg3-FdG_VE"
+    },
+    {
+      "title": "test",
+      "body": "test",
+      "id": "x3xnJwdLIuM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
