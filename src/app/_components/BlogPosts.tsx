@@ -24,12 +24,21 @@ const BlogPosts = ({ posts }: { posts: Post[] }) => {
         <div key={post.id} className="card">
           <h1 className="font-medium text-xl">{post.title}</h1>
           <p className="my-2 line-clamp-1">{post.body}</p>
-          <Link
-            href={`/posts/${post.id}`}
-            className="text-sm font-medium text-blue-500"
-          >
-            Read More
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link
+              href={`/posts/${post.id}`}
+              className="text-sm font-medium text-blue-500"
+            >
+              Read More
+            </Link>
+
+            <Link
+              href={`/posts/${post.id}/edit`}
+              className="button bg-green-500 text-white text-xs"
+            >
+              Edit
+            </Link>
+          </div>
         </div>
       ))}
     </div>
