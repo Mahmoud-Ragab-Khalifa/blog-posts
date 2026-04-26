@@ -1,24 +1,25 @@
 {
   "posts": [
     {
-      "title": "Fourth Blog Post From Server Actions",
+      "title": "Fourth Blog Post From Server Actions+",
       "body": "This is Fourth Blog Post From Server Actions",
       "id": "8oaFUaNCKl0"
     },
     {
-      "title": "test",
+      "title": "testiop",
       "body": "test",
       "id": "kbP5miIefTk"
     },
     {
-      "title": "last",
+      "title": "lastttt",
       "body": "last",
       "id": "-fg3-FdG_VE"
     },
     {
-      "title": "test",
+      "title": "testooooooooooooooo",
       "body": "test",
       "id": "x3xnJwdLIuM"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

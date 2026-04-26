@@ -34,12 +34,15 @@ export const updatePost = async (
   prevState: unknown,
   formData: FormData,
 ) => {
-  const result = updatePostSchema.safeParse(
-    Object.fromEntries(formData.entries()),
-  );
+  const values = Object.fromEntries(formData.entries());
+
+  const result = updatePostSchema.safeParse(values);
 
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors;
+    return {
+      errors: result.error.formErrors.fieldErrors,
+      values,
+    };
   }
 
   const data = result.data;
@@ -55,5 +58,6 @@ export const updatePost = async (
   }
 
   revalidatePath("/");
+  revalidatePath(`/posts/${id}/edit`);
   redirect("/");
 };

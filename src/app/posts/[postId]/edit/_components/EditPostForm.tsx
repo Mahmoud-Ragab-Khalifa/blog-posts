@@ -1,14 +1,28 @@
 "use client";
 
 import { updatePost } from "@/app/posts/_actions/posts";
+import { Post } from "@/types/post";
 import Link from "next/link";
 import { useActionState } from "react";
 
-const EditPostForm = ({ id }: { id: string }) => {
-  const [error, action, pending] = useActionState(
-    updatePost.bind(null, id),
-    {},
+const EditPostForm = ({ post }: { post: Post }) => {
+  const initialState = {
+    errors: {},
+    values: {
+      title: post.title,
+      body: post.body,
+    },
+  };
+
+  const [state, action, pending] = useActionState(
+    updatePost.bind(null, post.id),
+    initialState,
   );
+
+  const getString = (value: FormDataEntryValue | undefined | null) => {
+    if (!value) return "";
+    return typeof value === "string" ? value : value.toString();
+  };
 
   return (
     <form className="w-full card max-w-lg grid gap-6" action={action}>
@@ -20,9 +34,12 @@ const EditPostForm = ({ id }: { id: string }) => {
           id="title"
           className="input"
           placeholder="Enter Title To Update..."
+          defaultValue={getString(state?.values?.title) ?? post.title}
         />
-        {error.title && (
-          <p className="text-red-500 italic font-medium">{error.title}</p>
+        {state?.errors.title && (
+          <p className="text-red-500 italic font-medium">
+            {state?.errors.title}
+          </p>
         )}
       </div>
 
@@ -33,9 +50,12 @@ const EditPostForm = ({ id }: { id: string }) => {
           id="body"
           placeholder="Enter Body To Update..."
           className="input h-30 resize-none"
+          defaultValue={getString(state?.values?.body) ?? post.body}
         />
-        {error.body && (
-          <p className="text-red-500 italic font-medium">{error.body}</p>
+        {state?.errors.body && (
+          <p className="text-red-500 italic font-medium">
+            {state?.errors.body}
+          </p>
         )}
       </div>
 
@@ -52,7 +72,7 @@ const EditPostForm = ({ id }: { id: string }) => {
           className="button bg-blue-500 text-white"
           disabled={pending}
         >
-          Update
+          {pending ? "Updating..." : "Update"}
         </button>
       </div>
     </form>
