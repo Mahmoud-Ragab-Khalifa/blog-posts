@@ -11,8 +11,8 @@
       "id": "kbP5miIefTk"
     },
     {
-      "title": "new",
-      "body": "new",
+      "title": "last",
+      "body": "last",
       "id": "-fg3-FdG_VE"
     },
     {
@@ -20,6 +20,5 @@
       "body": "test",
       "id": "x3xnJwdLIuM"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
