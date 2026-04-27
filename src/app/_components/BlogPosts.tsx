@@ -4,6 +4,7 @@ import { useSearch } from "@/contexts/SearchContext";
 import { Post } from "@/types/post";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import DeletePost from "../posts/_components/DeletePost";
 
 const BlogPosts = ({ posts }: { posts: Post[] }) => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
@@ -32,12 +33,16 @@ const BlogPosts = ({ posts }: { posts: Post[] }) => {
               Read More
             </Link>
 
-            <Link
-              href={`/posts/${post.id}/edit`}
-              className="button bg-green-500 text-white text-xs"
-            >
-              Edit
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href={`/posts/${post.id}/edit`}
+                className="button bg-green-500 text-white text-xs"
+              >
+                Edit
+              </Link>
+
+              <DeletePost postId={post.id} />
+            </div>
           </div>
         </div>
       ))}

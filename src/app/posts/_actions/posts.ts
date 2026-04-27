@@ -61,3 +61,25 @@ export const updatePost = async (
   revalidatePath(`/posts/${id}/edit`);
   redirect("/");
 };
+
+export const deletePost = async (postId: string) => {
+  try {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`, {
+      method: "DELETE",
+    });
+
+    revalidatePath("/");
+
+    return {
+      message: "Post Deleted Sucessfully",
+      status: 200,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      message: "Failed To Delete Post Try Again",
+      status: 500,
+    };
+  }
+};

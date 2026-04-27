@@ -17,6 +17,7 @@ const NewPostForm = () => {
           id="title"
           className="input"
           placeholder="Enter Post Title..."
+          autoFocus
         />
         {error?.title && (
           <p className="text-red-500 font-medium italic">{error?.title}</p>
