@@ -10,23 +10,36 @@ export const createNewPost = async (prevState: unknown, formData: FormData) => {
   );
 
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors;
+    return {
+      error: result.error.formErrors.fieldErrors,
+      status: 400,
+      formData,
+    };
   }
 
   const data = result.data;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+  try {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed To Create Post");
+    revalidatePath("/");
+
+    return {
+      message: "Post Added Sucessfully",
+      status: 200,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      message: "Failed To Add Post",
+      status: 500,
+    };
   }
-
-  revalidatePath("/");
-  redirect("/");
 };
 
 export const updatePost = async (
