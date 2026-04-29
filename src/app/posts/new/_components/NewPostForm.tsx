@@ -2,7 +2,8 @@
 
 import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
+import UploadImage from "./UploadImage";
 
 const NewPostForm = () => {
   type ValidationErrors = { [key: string]: string[] } | undefined;
@@ -29,10 +30,17 @@ const NewPostForm = () => {
     formData: null,
   };
 
+  const [selectedImage, setSelectedImage] = useState("");
+
   const [state, action, pending] = useActionState(createNewPost, initialState);
 
   return (
     <form className="w-full max-w-lg card grid gap-6" action={action}>
+      <UploadImage
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+      />
+
       <div className="grid gap-2 5">
         <label htmlFor="title">Title</label>
         <input
