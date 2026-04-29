@@ -41,13 +41,12 @@ const UploadImage = ({
 
       <label
         htmlFor="image"
-        className={
-          selectedImage
-            ? "absolute top-1/2 left-1/2 -translate-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100 text-neutral-300"
-            : "w-full h-50 flex items-center justify-center rounded-md cursor-pointer"
-        }
+        className={`${
+          selectedImage &&
+          "absolute transition-colors duration-300 bg-none group-hover:bg-gray-500/50 z-50 w-full h-full rounded-md opacity-0 group-hover:opacity-100 text-neutral-950"
+        } w-full h-50 flex items-center justify-center rounded-md cursor-pointer`}
       >
-        Upload Image Here
+        {selectedImage ? "Change Image" : "Upload Image Here"}
       </label>
     </div>
   );
