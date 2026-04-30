@@ -4,10 +4,9 @@ import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import UploadImage from "./UploadImage";
+import { ValidationErrors } from "@/types/validationErrors";
 
 const NewPostForm = () => {
-  type ValidationErrors = { [key: string]: string[] } | undefined;
-
   const formData = new FormData();
 
   Object.entries({}).forEach(([Key, value]) => {
