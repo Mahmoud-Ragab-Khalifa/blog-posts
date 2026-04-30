@@ -35,10 +35,18 @@ const NewPostForm = () => {
 
   return (
     <form className="w-full max-w-lg card grid gap-6" action={action}>
-      <UploadImage
-        selectedImage={selectedImage}
-        setSelectedImage={setSelectedImage}
-      />
+      <div>
+        <UploadImage
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        />
+
+        {state.error?.image && (
+          <p className="text-red-500 font-medium italic mt-2.5">
+            {state.error?.image}
+          </p>
+        )}
+      </div>
 
       <div className="grid gap-2 5">
         <label htmlFor="title">Title</label>
