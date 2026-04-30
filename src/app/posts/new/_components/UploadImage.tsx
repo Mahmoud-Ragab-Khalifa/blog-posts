@@ -33,6 +33,7 @@ const UploadImage = ({
 
       <input
         type="file"
+        accept="image/*"
         name="image"
         id="image"
         className="hidden"
@@ -43,7 +44,7 @@ const UploadImage = ({
         htmlFor="image"
         className={`${
           selectedImage &&
-          "absolute transition-colors duration-300 bg-none group-hover:bg-gray-500/50 z-50 w-full h-full rounded-md opacity-0 group-hover:opacity-100 text-neutral-950"
+          "absolute transition-all duration-500 bg-none group-hover:bg-gray-500/50 z-50 w-full h-full rounded-md opacity-0 group-hover:opacity-100 text-neutral-950"
         } w-full h-50 flex items-center justify-center rounded-md cursor-pointer`}
       >
         {selectedImage ? "Change Image" : "Upload Image Here"}
