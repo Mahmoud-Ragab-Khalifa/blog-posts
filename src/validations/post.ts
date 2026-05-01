@@ -9,7 +9,12 @@ export const addPostSchema = z.object({
         return false;
       }
 
-      const validMimiTypes = ["image/jpeg", "image/png", "image/gif"];
+      const validMimiTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/jpg",
+      ];
 
       return validMimiTypes.includes(value.type);
     },
