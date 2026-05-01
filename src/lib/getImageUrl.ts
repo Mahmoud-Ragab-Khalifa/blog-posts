@@ -6,7 +6,7 @@ export const getImageUrl = async (imageFile: File) => {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/upload`,
+      `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/upload`,
       {
         method: "POST",
         body: formData,

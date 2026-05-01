@@ -1,5 +1,6 @@
 "use server";
 
+import { getImageUrl } from "@/lib/getImageUrl";
 import { addPostSchema, updatePostSchema } from "@/validations/post";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -19,11 +20,16 @@ export const createNewPost = async (prevState: unknown, formData: FormData) => {
 
   const data = result.data;
 
+  const imageFile = data.image as File;
+  const imageUrl = Boolean(imageFile.size)
+    ? await getImageUrl(imageFile)
+    : undefined;
+
   try {
     await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, image: imageUrl }),
     });
 
     revalidatePath("/");

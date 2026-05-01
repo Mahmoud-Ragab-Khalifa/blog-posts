@@ -1,44 +1,10 @@
 {
   "posts": [
     {
-      "title": "hhhhhhhhhhhhhhhhhhhhhhhhhhh",
-      "body": "ppppppppppppppppp",
-      "id": "WMw0QjmWJ-Y"
-    },
-    {
-      "title": "p",
-      "body": "p",
-      "id": "mR0MrfXPAas"
-    },
-    {
-      "title": "p",
-      "body": "p",
-      "id": "Tuc61YLpMtk"
-    },
-    {
-      "title": "p",
-      "body": "p",
-      "id": "HoLj13o_p3M"
-    },
-    {
-      "title": "o",
-      "body": "o",
-      "id": "jA-Xa6NTovU"
-    },
-    {
-      "title": "p",
-      "body": "p",
-      "id": "CWXJ4Brpq88"
-    },
-    {
-      "title": "p",
-      "body": "p",
-      "id": "LOE58yOEGLs"
-    },
-    {
-      "title": "rr",
-      "body": "rr",
-      "id": "hIJB8YZhGB8"
+      "title": "First Post With Image",
+      "body": "Awesome Post With Image",
+      "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777649198/profile_images/oe4f2l8f39zpiquyahim.png",
+      "id": "DenrhUAwKHM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
