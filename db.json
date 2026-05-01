@@ -1,11 +1,4 @@
 {
-  "posts": [
-    {
-      "title": "First Post With Image",
-      "body": "Awesome Post With Image",
-      "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777649198/profile_images/oe4f2l8f39zpiquyahim.png",
-      "id": "DenrhUAwKHM"
-    }
-  ],
+  "posts": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
