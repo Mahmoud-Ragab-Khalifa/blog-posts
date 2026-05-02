@@ -5,6 +5,12 @@
       "body": "testing...",
       "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777736332/profile_images/lujujnfmbtapvgtqpros.jpg",
       "id": "jqTLxJSypys"
+    },
+    {
+      "title": "try",
+      "body": "trying...",
+      "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777736724/profile_images/r6lh2bu9ezgkralrncv1.jpg",
+      "id": "jaeIJGiHZ5U"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -2,18 +2,13 @@
 
 import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import UploadImage from "../../_components/UploadImage";
 import { ValidationErrors } from "@/types/validationErrors";
+import toast from "react-hot-toast";
 
 const NewPostForm = () => {
   const formData = new FormData();
-
-  Object.entries({}).forEach(([Key, value]) => {
-    if (value !== null && value !== undefined && Key !== "image") {
-      formData.append(Key, value.toString());
-    }
-  });
 
   type ActionState = {
     message?: string;
@@ -32,6 +27,16 @@ const NewPostForm = () => {
   const [selectedImage, setSelectedImage] = useState("");
 
   const [state, action, pending] = useActionState(createNewPost, initialState);
+
+  useEffect(() => {
+    if (state.message && state.status && !pending) {
+      if (state.status === 201) {
+        toast.success(state.message);
+      } else {
+        toast.error(state.message);
+      }
+    }
+  }, [state.message, state.status, pending]);
 
   return (
     <form className="w-full max-w-lg card grid gap-6" action={action}>

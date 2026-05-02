@@ -36,7 +36,7 @@ export const createNewPost = async (prevState: unknown, formData: FormData) => {
 
     return {
       message: "Post Added Sucessfully",
-      status: 200,
+      status: 201,
     };
   } catch (error) {
     console.error(error);
