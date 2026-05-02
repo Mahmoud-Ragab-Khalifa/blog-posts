@@ -41,9 +41,9 @@ const EditPostForm = ({ post }: { post: Post }) => {
   useEffect(() => {
     if (state.message && state.status && !pending) {
       if (state.status === 200) {
-        toast.success("Post Updated Successfully");
+        toast.success(state.message);
       } else {
-        toast.error("Cannot Update The Post");
+        toast.error(state.message);
       }
     }
   }, [state.message, state.status, pending]);
