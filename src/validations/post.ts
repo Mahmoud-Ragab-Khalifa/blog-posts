@@ -40,7 +40,7 @@ export const updatePostSchema = z.object({
         "image/jpg",
       ];
 
-      return validMimiTypes.includes(value.type);
+      return validMimiTypes.includes(value.type) || value instanceof File;
     },
     {
       message: "Post Image Is Required To Update Post",

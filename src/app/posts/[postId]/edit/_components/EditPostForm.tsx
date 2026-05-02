@@ -3,29 +3,39 @@
 import { updatePost } from "@/app/posts/_actions/posts";
 import UploadImage from "@/app/posts/_components/UploadImage";
 import { Post } from "@/types/post";
+import { ValidationErrors } from "@/types/validationErrors";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 
 const EditPostForm = ({ post }: { post: Post }) => {
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [selectedImage, setSelectedImage] = useState<string>(post.image);
 
-  const initialState = {
+  type ActionState = {
+    errors?: ValidationErrors;
+    status?: number | null;
+    message?: string;
+    formData?: FormData;
+  };
+
+  const formData = new FormData();
+
+  Object.entries(post).forEach(([Key, value]) => {
+    if (value !== null && value !== undefined && Key !== "image") {
+      formData.append(Key, value.toString());
+    }
+  });
+
+  const initialState: ActionState = {
     errors: {},
-    values: {
-      title: post.title,
-      body: post.body,
-    },
+    status: null,
+    message: "",
+    formData,
   };
 
   const [state, action, pending] = useActionState(
-    updatePost.bind(null, post.id),
+    updatePost.bind(null, post),
     initialState,
   );
-
-  const getString = (value: FormDataEntryValue | undefined | null) => {
-    if (!value) return "";
-    return typeof value === "string" ? value : value.toString();
-  };
 
   return (
     <form className="w-full card max-w-lg grid gap-6" action={action}>
@@ -34,6 +44,12 @@ const EditPostForm = ({ post }: { post: Post }) => {
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
         />
+
+        {state.errors?.image && (
+          <p className="text-red-500 italic font-medium mt-2.5">
+            {state.errors?.image}
+          </p>
+        )}
       </div>
 
       <div className="grid gap-2 5">
@@ -44,11 +60,11 @@ const EditPostForm = ({ post }: { post: Post }) => {
           id="title"
           className="input"
           placeholder="Enter Title To Update..."
-          defaultValue={getString(state?.values?.title) ?? post.title}
+          defaultValue={(state.formData?.get("title") as string) ?? post.title}
         />
-        {state?.errors.title && (
+        {state.errors?.title && (
           <p className="text-red-500 italic font-medium">
-            {state?.errors.title}
+            {state.errors?.title}
           </p>
         )}
       </div>
@@ -60,11 +76,11 @@ const EditPostForm = ({ post }: { post: Post }) => {
           id="body"
           placeholder="Enter Body To Update..."
           className="input h-30 resize-none"
-          defaultValue={getString(state?.values?.body) ?? post.body}
+          defaultValue={(state.formData?.get("body") as string) ?? post.body}
         />
-        {state?.errors.body && (
+        {state.errors?.body && (
           <p className="text-red-500 italic font-medium">
-            {state?.errors.body}
+            {state.errors?.body}
           </p>
         )}
       </div>
