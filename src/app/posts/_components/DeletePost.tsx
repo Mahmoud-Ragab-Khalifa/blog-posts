@@ -30,9 +30,13 @@ const DeletePost = ({ postId }: { postId: string }) => {
 
   useEffect(() => {
     if (state.message && state.status && !state.pending) {
-      toast.success(state.message);
+      if (state.status === 200) {
+        toast.success(state.message);
+      } else {
+        toast.error(state.message);
+      }
     }
-  }, [state]);
+  }, [state.message, state.status, state.pending]);
 
   return (
     <button

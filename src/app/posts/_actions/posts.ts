@@ -98,21 +98,31 @@ export const updatePost = async (
 
 export const deletePost = async (postId: string) => {
   try {
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    if (!res.ok) {
+      return {
+        message: "Failed To Delete Post",
+        status: res.status,
+      };
+    }
 
     revalidatePath("/");
 
     return {
-      message: "Post Deleted Sucessfully",
+      message: "Post Deleted Successfully",
       status: 200,
     };
   } catch (error) {
     console.error(error);
 
     return {
-      message: "Failed To Delete Post Try Again",
+      message: "Unexpected Error Occurred",
       status: 500,
     };
   }
