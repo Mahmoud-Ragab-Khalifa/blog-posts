@@ -5,7 +5,8 @@ import UploadImage from "@/app/posts/_components/UploadImage";
 import { Post } from "@/types/post";
 import { ValidationErrors } from "@/types/validationErrors";
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const EditPostForm = ({ post }: { post: Post }) => {
   const [selectedImage, setSelectedImage] = useState<string>(post.image);
@@ -36,6 +37,16 @@ const EditPostForm = ({ post }: { post: Post }) => {
     updatePost.bind(null, post),
     initialState,
   );
+
+  useEffect(() => {
+    if (state.message && state.status && !pending) {
+      if (state.status === 200) {
+        toast.success("Post Updated Successfully");
+      } else {
+        toast.error("Cannot Update The Post");
+      }
+    }
+  }, [state.message, state.status, pending]);
 
   return (
     <form className="w-full card max-w-lg grid gap-6" action={action}>

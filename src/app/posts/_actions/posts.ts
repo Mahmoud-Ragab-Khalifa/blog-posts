@@ -84,7 +84,7 @@ export const updatePost = async (
 
     return {
       message: "Post Updated Sucessfully",
-      status: 201,
+      status: 200,
     };
   } catch (error) {
     console.log(error);
