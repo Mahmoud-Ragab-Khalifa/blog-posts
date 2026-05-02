@@ -11,6 +11,12 @@
       "body": "trying...",
       "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777737406/profile_images/jwhghapjzeldi69brg7o.jpg",
       "id": "GU7l6qjP9Co"
+    },
+    {
+      "title": "New Post",
+      "body": "Handle Create New Post",
+      "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777737965/profile_images/qh1qfvtd7v9zdmmdomtr.jpg",
+      "id": "Q_Vi7gL9-FA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

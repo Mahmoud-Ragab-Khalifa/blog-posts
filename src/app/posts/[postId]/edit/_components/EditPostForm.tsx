@@ -2,21 +2,14 @@
 
 import { updatePost } from "@/app/posts/_actions/posts";
 import UploadImage from "@/app/posts/_components/UploadImage";
+import { ActionState } from "@/types/actionState";
 import { Post } from "@/types/post";
-import { ValidationErrors } from "@/types/validationErrors";
 import Link from "next/link";
 import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const EditPostForm = ({ post }: { post: Post }) => {
   const [selectedImage, setSelectedImage] = useState<string>(post.image);
-
-  type ActionState = {
-    errors?: ValidationErrors;
-    status?: number | null;
-    message?: string;
-    formData?: FormData;
-  };
 
   const formData = new FormData();
 

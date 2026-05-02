@@ -12,7 +12,7 @@ export const createNewPost = async (prevState: unknown, formData: FormData) => {
 
   if (result.success === false) {
     return {
-      error: result.error.formErrors.fieldErrors,
+      errors: result.error.formErrors.fieldErrors,
       status: 400,
       formData,
     };

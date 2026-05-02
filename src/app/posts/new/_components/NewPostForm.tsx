@@ -4,22 +4,13 @@ import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
 import { useActionState, useEffect, useState } from "react";
 import UploadImage from "../../_components/UploadImage";
-import { ValidationErrors } from "@/types/validationErrors";
 import toast from "react-hot-toast";
+import { ActionState } from "@/types/actionState";
 
 const NewPostForm = () => {
-  const formData = new FormData();
-
-  type ActionState = {
-    message?: string;
-    error?: ValidationErrors;
-    status?: number | null;
-    formData?: FormData | null;
-  };
-
   const initialState: ActionState = {
+    errors: {},
     message: "",
-    error: {},
     status: null,
     formData: null,
   };
@@ -46,9 +37,9 @@ const NewPostForm = () => {
           setSelectedImage={setSelectedImage}
         />
 
-        {state.error?.image && (
+        {state.errors?.image && (
           <p className="text-red-500 font-medium italic mt-2.5">
-            {state.error?.image}
+            {state.errors?.image}
           </p>
         )}
       </div>
@@ -64,9 +55,9 @@ const NewPostForm = () => {
           defaultValue={state.formData?.get("title") as string}
           autoFocus
         />
-        {state.error?.title && (
+        {state.errors?.title && (
           <p className="text-red-500 font-medium italic">
-            {state.error?.title}
+            {state.errors?.title}
           </p>
         )}
       </div>
@@ -78,13 +69,12 @@ const NewPostForm = () => {
           id="body"
           className="input resize-none h-30"
           placeholder="Enter Post Body..."
-          defaultValue={
-            (state.formData?.get("body") as string) ??
-            (formData.get("body") as string)
-          }
+          defaultValue={state.formData?.get("body") as string}
         />
-        {state.error?.body && (
-          <p className="text-red-500 font-medium italic">{state.error?.body}</p>
+        {state.errors?.body && (
+          <p className="text-red-500 font-medium italic">
+            {state.errors?.body}
+          </p>
         )}
       </div>
 
