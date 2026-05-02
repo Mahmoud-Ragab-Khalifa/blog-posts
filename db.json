@@ -1,4 +1,11 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "title": "Test",
+      "body": "Teating...",
+      "image": "https://res.cloudinary.com/djdhc5rlo/image/upload/v1777732088/profile_images/fkzczl2ynbuvncczkgpb.jpg",
+      "id": "_8y6tKhA88o"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

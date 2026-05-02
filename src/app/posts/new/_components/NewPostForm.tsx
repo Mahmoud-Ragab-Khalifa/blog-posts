@@ -3,7 +3,7 @@
 import { createNewPost } from "../../_actions/posts";
 import Link from "next/link";
 import { useActionState, useState } from "react";
-import UploadImage from "./UploadImage";
+import UploadImage from "../../_components/UploadImage";
 import { ValidationErrors } from "@/types/validationErrors";
 
 const NewPostForm = () => {

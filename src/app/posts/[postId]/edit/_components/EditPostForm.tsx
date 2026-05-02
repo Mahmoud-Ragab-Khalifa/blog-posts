@@ -1,11 +1,14 @@
 "use client";
 
 import { updatePost } from "@/app/posts/_actions/posts";
+import UploadImage from "@/app/posts/_components/UploadImage";
 import { Post } from "@/types/post";
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 
 const EditPostForm = ({ post }: { post: Post }) => {
+  const [selectedImage, setSelectedImage] = useState<string>("");
+
   const initialState = {
     errors: {},
     values: {
@@ -26,6 +29,13 @@ const EditPostForm = ({ post }: { post: Post }) => {
 
   return (
     <form className="w-full card max-w-lg grid gap-6" action={action}>
+      <div>
+        <UploadImage
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        />
+      </div>
+
       <div className="grid gap-2 5">
         <label htmlFor="title">Title</label>
         <input
